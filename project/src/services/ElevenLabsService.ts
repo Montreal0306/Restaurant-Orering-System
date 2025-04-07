@@ -12,7 +12,6 @@ class ElevenLabsService {
    * Initialize the service with API key and voice ID
    */
   initialize(voiceId: string, apiKey?: string): void {
-    // Get from environment variables or passed parameter
     this.apiKey = apiKey || process.env.REACT_APP_ELEVENLABS_API_KEY || null;
     this.voiceId = voiceId;
     
@@ -24,9 +23,10 @@ class ElevenLabsService {
   /**
    * Convert text to speech using ElevenLabs API
    */
-  async textToSpeech(text: string): Promise<ArrayBuffer> {
+  async textToSpeech(text: string): Promise<ArrayBuffer | null> {
     if (!this.apiKey || !this.voiceId) {
-      throw new Error('ElevenLabs service not properly initialized');
+      console.warn('ElevenLabs service not properly initialized.');
+      return null;
     }
     
     try {
@@ -36,28 +36,27 @@ class ElevenLabsService {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'xi-api-key': this.apiKey,
+            'xi-api-key': this.apiKey
           },
           body: JSON.stringify({
             text,
-            model_id: 'eleven_monolingual_v1',
+            model_id: 'eleven_multilingual_v2',
             voice_settings: {
               stability: 0.5,
-              similarity_boost: 0.5,
-            },
-          }),
+              similarity_boost: 0.75
+            }
+          })
         }
       );
       
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(`ElevenLabs API error: ${errorData.detail || response.statusText}`);
+        throw new Error(`ElevenLabs API error: ${response.statusText}`);
       }
       
       return await response.arrayBuffer();
     } catch (error) {
-      console.error('Error in text-to-speech conversion:', error);
-      throw error;
+      console.error('Error converting text to speech:', error);
+      return null;
     }
   }
   
