@@ -7,13 +7,15 @@ class ElevenLabsService {
   private apiKey: string | null = null;
   private voiceId: string | null = null;
   private baseUrl = 'https://api.elevenlabs.io/v1';
+  private knowledgeBase: string | null = null;
   
   /**
    * Initialize the service with API key and voice ID
    */
-  initialize(voiceId: string, apiKey?: string): void {
+  initialize(voiceId: string, apiKey?: string, knowledgeBase?: string): void {
     this.apiKey = apiKey || process.env.REACT_APP_ELEVENLABS_API_KEY || null;
     this.voiceId = voiceId;
+    this.knowledgeBase = knowledgeBase || null;
     
     if (!this.apiKey) {
       console.warn('ElevenLabs API key not provided. Text-to-speech functionality will be limited.');
@@ -30,6 +32,14 @@ class ElevenLabsService {
     }
     
     try {
+      // If we have a knowledge base, we can use it to enhance the response
+      let enhancedText = text;
+      if (this.knowledgeBase) {
+        // You could implement logic here to use the knowledge base to enhance the response
+        // For now, we'll just use the original text
+        enhancedText = text;
+      }
+
       const response = await fetch(
         `${this.baseUrl}/text-to-speech/${this.voiceId}`,
         {
@@ -39,7 +49,7 @@ class ElevenLabsService {
             'xi-api-key': this.apiKey
           },
           body: JSON.stringify({
-            text,
+            text: enhancedText,
             model_id: 'eleven_multilingual_v2',
             voice_settings: {
               stability: 0.5,
