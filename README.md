@@ -1,5 +1,6 @@
 # AI Restaurant Assistant
 
+
 A modern restaurant ordering system featuring an AI chatbot and voice agent to enhance the dining experience. Built with React, TypeScript, and integrated with OpenAI and ElevenLabs APIs.
 
 ## 🌟 Features
@@ -117,3 +118,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - OpenAI for their GPT API
 - ElevenLabs for their voice AI technology
 - The React and TypeScript communities 
+
+API keys here are temporary
