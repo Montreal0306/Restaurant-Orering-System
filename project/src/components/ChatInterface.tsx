@@ -5,6 +5,7 @@ import { elevenLabsService } from '../services/ElevenLabsService';
 import { openAIService } from '../services/OpenAIService';
 import useMenuStore from '../store/menuStore';
 import VoiceControls from './VoiceControls';
+import restaurantKnowledgeBase from '../data/restaurant-knowledge-base.txt';
 
 interface ChatInterfaceProps {
   onClose?: () => void;
@@ -37,9 +38,9 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       dietaryOptions: ['Vegetarian', 'Vegan', 'Gluten-Free']
     });
     
-    // Initialize ElevenLabs service
+    // Initialize ElevenLabs service with knowledge base
     if (audioEnabled) {
-      elevenLabsService.initialize('eleven_multilingual_v2', 'YOUR_ELEVENLABS_API_KEY');
+      elevenLabsService.initialize('eleven_multilingual_v2', 'YOUR_ELEVENLABS_API_KEY', restaurantKnowledgeBase);
     }
     
     return () => {
@@ -93,17 +94,19 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           const audioData = await elevenLabsService.textToSpeech(aiResponseText);
           
           // Play the audio
-          const blob = new Blob([audioData], { type: 'audio/mpeg' });
-          const url = URL.createObjectURL(blob);
-          
-          if (audio) {
-            audio.pause();
-            audio.src = url;
-            audio.play();
-          } else {
-            const newAudio = new Audio(url);
-            setAudio(newAudio);
-            newAudio.play();
+          if (audioData) {
+            const blob = new Blob([audioData], { type: 'audio/mpeg' });
+            const url = URL.createObjectURL(blob);
+            
+            if (audio) {
+              audio.pause();
+              audio.src = url;
+              audio.play();
+            } else {
+              const newAudio = new Audio(url);
+              setAudio(newAudio);
+              newAudio.play();
+            }
           }
         } catch (error) {
           console.error('Error generating or playing speech:', error);
@@ -143,6 +146,26 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     }
   };
 
+  const processAudioResponse = async (text: string) => {
+    if (!audioEnabled) return;
+    
+    const audioData = await elevenLabsService.textToSpeech(text);
+    if (!audioData) return;
+    
+    // We know audioData is ArrayBuffer here since we checked for null
+    const blob = new Blob([audioData as ArrayBuffer], { type: 'audio/mpeg' });
+    const url = URL.createObjectURL(blob);
+    
+    if (audio) {
+      audio.pause();
+      audio.src = '';
+    }
+    
+    const newAudio = new Audio(url);
+    setAudio(newAudio);
+    await newAudio.play();
+  };
+
   return (
     <div className="flex flex-col h-full md:h-[450px] bg-white w-full">
       <div className="flex items-center justify-between p-3 border-b">
@@ -173,8 +196,13 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         {messages.length === 0 && (
           <div className="text-center py-6 text-gray-500">
             <Bot className="w-8 h-8 mx-auto mb-2 text-blue-600" />
-            <p className="text-base font-medium mb-1">Welcome to our restaurant!</p>
-            <p className="text-sm">Ask me about our menu, dietary options, or place an order.</p>
+            <p className="text-base font-medium mb-2">Hi! I'm your AI Restaurant Assistant</p>
+            <div className="text-sm mb-4">
+              <p className="mb-3">⚠️ This is a demo version only. Once fully implemented, I'll transform your dining experience by allowing you to browse menus effortlessly, receive instant personalized dish recommendations, find meals tailored to your dietary needs, and answer all your questions about ingredients—without needing any interaction with staff.</p>
+              <p className="mb-3">I'll streamline your orders, save your valuable time, and help restaurants provide faster, more efficient service.</p>
+              <p className="mb-3">For now, please explore the menu manually while we prepare the complete AI experience! 🍽️</p>
+              <p className="text-xs text-gray-400">Note: The voice agent has a time limit per response, but it should work fine for most interactions.</p>
+            </div>
           </div>
         )}
         {messages.map((message) => (

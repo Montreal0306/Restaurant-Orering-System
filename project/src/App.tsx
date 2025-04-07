@@ -156,7 +156,7 @@ function App() {
   }, [cart.items.length]);
 
   const appContent = (
-    <div className="bg-gray-50 min-h-screen pb-16">
+    <div className={`bg-gray-50 min-h-screen pb-16 ${isTabletMode ? 'tablet-mode' : ''}`}>
       <Header isTabletMode={isTabletMode} toggleTabletMode={toggleTabletMode} />
       
       <main className="container mx-auto px-4 py-8">
@@ -165,12 +165,13 @@ function App() {
         </div>
       </main>
 
-      <FloatingChatBubble />
-      <BottomNav onCartToggle={setIsCartOpen} cartIsOpen={isCartOpen} />
+      <FloatingChatBubble isTabletMode={isTabletMode} />
+      <BottomNav onCartToggle={setIsCartOpen} cartIsOpen={isCartOpen} isTabletMode={isTabletMode} />
       
       <CartModal 
         isOpen={isCartOpen} 
         onClose={() => setIsCartOpen(false)} 
+        isTabletMode={isTabletMode}
       />
       
       <Toast 
@@ -211,7 +212,7 @@ function App() {
             >
               {/* Content Container with Bottom Padding for Nav */}
               <div className="h-full overflow-y-auto overflow-x-hidden pb-16 hide-scrollbar">
-                <div className="bg-gray-50 min-h-full">
+                <div className="bg-gray-50 min-h-full tablet-mode">
                   <Header isTabletMode={isTabletMode} toggleTabletMode={toggleTabletMode} />
                   
                   <main className="container mx-auto px-4 py-8">
@@ -232,21 +233,43 @@ function App() {
                     type={toastType} 
                     onHide={() => setToastVisible(false)}
                   />
+
+                  {/* Fixed Bottom Navigation */}
+                  <div className="absolute bottom-0 left-0 right-0 z-40">
+                    <BottomNav 
+                      onCartToggle={setIsCartOpen} 
+                      cartIsOpen={isCartOpen} 
+                      isTabletMode={true}
+                    />
+                  </div>
+                  
+                  {/* Floating Chat and AI Agent Group */}
+                  <div className="absolute bottom-16 right-4 z-50 flex items-end gap-2">
+                    {/* ElevenLabs Widget for Tablet Mode */}
+                    <div className="flex items-end -mb-3">
+                      <style>
+                        {`
+                          .tablet-widget elevenlabs-convai::part(button) {
+                            width: 48px !important;
+                            height: 48px !important;
+                            background-color: #2563eb !important;
+                            border-radius: 9999px !important;
+                          }
+                          .tablet-widget elevenlabs-convai::part(container) {
+                            position: absolute !important;
+                            bottom: 0 !important;
+                            right: 0 !important;
+                          }
+                        `}
+                      </style>
+                      <div className="tablet-widget">
+                        <elevenlabs-convai agent-id="Z6o6keC3kdUadF8q4qpa"></elevenlabs-convai>
+                      </div>
+                    </div>
+                    {/* Floating Chat in Tablet Mode */}
+                    <FloatingChatBubble isTabletMode={true} />
+                  </div>
                 </div>
-              </div>
-              
-              {/* Fixed Bottom Navigation */}
-              <div className="absolute bottom-0 left-0 right-0 z-40">
-                <BottomNav 
-                  onCartToggle={setIsCartOpen} 
-                  cartIsOpen={isCartOpen} 
-                  isTabletMode={true}
-                />
-              </div>
-              
-              {/* Floating Chat in Tablet Mode */}
-              <div className="absolute bottom-16 right-4 z-50">
-                <FloatingChatBubble isTabletMode={true} />
               </div>
             </div>
             

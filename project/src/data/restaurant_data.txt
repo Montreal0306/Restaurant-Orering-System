@@ -1,0 +1,76 @@
+# Valsoft Restaurant Information
+
+## General Information
+- Name: Valsoft Restaurant
+- Location: 789 Digital Avenue, Innovation District, Montreal, QC, Canada
+- Contact: (514) 555-9876
+- Email: info@valsoftrestaurant.com
+- Website: https://restaurant-ordering-system.vercel.app/
+- Operating Hours: 
+  - Monday to Thursday: 11:00 AM - 10:00 PM
+  - Friday to Saturday: 11:00 AM - 11:00 PM
+  - Sunday: 12:00 PM - 9:00 PM
+
+## Menu Highlights
+Today's Chef's Selections:
+- Seared Scallops ($12.00) - Fresh diver scallops, perfectly seared and served with lemon-butter sauce
+- Tteokbokki ($16.50) - Our new Korean special, featuring soft and chewy rice cakes in spicy gochujang sauce
+- Filet Mignon ($32.00) - 8 oz tender filet mignon grilled to perfection, served with truffle
+- Seafood Linguine ($25.50) - Linguine pasta with shrimp, scallops, and mussels in garlic sauce
+
+## Special Requests and Kitchen Policies
+- Allergy Accommodations:
+  - Gluten-Free Options: Many dishes can be modified, including pasta dishes with gluten-free alternatives
+  - Dairy-Free: Alternative ingredients available for most dishes
+  - Seafood Allergies: All dishes can be prepared in separate areas
+  - Nut Allergies: Most dishes are nut-free or can be modified
+- Dietary Options:
+  - Vegetarian: Multiple options available including Mushroom Ravioli ($22.00) and Truffle Fettuccine ($22.50)
+  - Vegan: Italian Garden Salad ($8.50), Penne Arrabbiata ($15.50)
+  - Gluten-Free: Most entrées can be modified
+  - Spicy Level: Adjustable upon request
+
+## Menu Categories
+1. Appetizers ($8.50-$12.00):
+   - Hot: Seared Scallops, Pale Shrimp, Crab Cakes
+   - Cold: Burrata Salad
+2. Salads ($8.50-$12.00):
+   - Classic: Caesar Salad
+   - Specialty: Beet & Goat Cheese
+   - Side: Italian Garden Salad
+3. Entrées ($28.50-$32.00):
+   - Beef: Filet Mignon
+   - Lamb: Rack of Lamb
+   - Poultry: Pan-Seared Duck Breast
+   - Seafood: Grilled Atlantic Salmon
+   - Asian: Tteokbokki
+4. Pasta ($15.50-$25.50):
+   - Cream Sauce: Truffle Fettuccine
+   - Seafood: Seafood Linguine
+   - Filled: Mushroom Ravioli
+   - Baked: Lasagna
+   - Tomato: Penne Arrabbiata
+5. Beverages ($3.00-$5.50):
+   - Non-Alcoholic: Sparkling Water
+   - Hot: Cappuccino, Hot Tea
+   - Cold: Lemonade, Iced Tea
+
+## Additional Services
+- Takeout: Available during all operating hours
+- Online Ordering: Available through our website
+- Private Events: Available for groups of 15-40 people
+- Special Dietary Menus: Available upon request
+
+## Customer Service
+- Manager: Sarah Chen
+- Manager's Hours:
+  - Monday to Friday: 10:00 AM - 6:00 PM
+  - Saturday: 12:00 PM - 8:00 PM
+  - Sunday: By appointment
+- Contact for Concerns: manager@valsoftrestaurant.com
+
+## Policies
+- Reservations: Recommended for parties of 6 or more
+- Cancellations: 2-hour notice required
+- Large Parties: Special menu available for groups of 8+
+- Payment Methods: All major credit cards, digital payments accepted

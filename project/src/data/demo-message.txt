@@ -1,0 +1,29 @@
+🤖 Chatbot Demo Notice
+
+Hi! I'm the Valsoft Restaurant AI Chatbot (Demo Preview).
+
+⚠️ This is a preview version. The chatbot is not yet implemented.
+
+When Fully Implemented, I Will Help With:
+• Browsing our menu and prices
+• Finding dishes that match your dietary needs
+• Providing dish recommendations
+• Answering questions about ingredients
+• Helping with order customization
+
+Current State:
+• Demo preview only
+• Responses not yet implemented
+• Static interface demonstration
+
+Coming Soon:
+• Full GPT-4 powered conversations
+• Smart menu recommendations
+• Dietary preference handling
+• Order customization assistance
+• Real-time response generation
+
+For now, you can browse our menu manually while we prepare the full AI experience! 🍽️
+
+---
+Demo Preview - Chatbot implementation coming soon 

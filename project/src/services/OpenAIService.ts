@@ -127,27 +127,19 @@ class OpenAIService {
    * Get a mock response for development/testing
    */
   private getMockResponse(message: string): string {
-    const lowerMessage = message.toLowerCase();
-    
-    // Simple pattern matching for demo purposes
-    if (lowerMessage.includes('recommend') || lowerMessage.includes('suggestion')) {
-      return "Based on our menu, I'd recommend trying our Signature Pasta with truffle sauce. It's one of our most popular dishes and features handmade pasta with seasonal ingredients. Would you like to know more about it or would you prefer something else?";
+    // For initial greeting or empty message, return demo message
+    if (!message.trim() || message.toLowerCase().includes('hi') || message.toLowerCase().includes('hello')) {
+      return `Hi! I'm your AI Restaurant Assistant (Demo Preview).
+
+⚠️ This is a demo version only. Once fully implemented, I'll transform your dining experience by allowing you to browse menus effortlessly, receive instant personalized dish recommendations, find meals tailored to your dietary needs, and answer all your questions about ingredients—without needing any interaction with staff. I'll streamline your orders, save your valuable time, and help restaurants provide faster, more efficient service.
+
+For now, please explore the menu manually while we prepare the complete AI experience! 🍽️
+
+Note: The voice agent has a time limit per response, but it should work fine for most interactions.`;
     }
-    
-    if (lowerMessage.includes('vegetarian') || lowerMessage.includes('vegan')) {
-      return "We have several excellent plant-based options. Our Mushroom Ravioli is a customer favorite, made with locally-sourced mushrooms and dairy-free cream sauce. We also have a wonderful Roasted Vegetable Platter with seasonal vegetables and house-made hummus.";
-    }
-    
-    if (lowerMessage.includes('spicy') || lowerMessage.includes('spice')) {
-      return "Our Spicy Seafood Pasta has a moderate heat level that most people enjoy. If you're sensitive to spice, I'd recommend our Classic Marinara instead. How spicy do you typically like your food?";
-    }
-    
-    if (lowerMessage.includes('allerg') || lowerMessage.includes('gluten')) {
-      return "I'm happy to help with allergen information. Many of our dishes can be modified to accommodate allergies. Our kitchen takes cross-contamination very seriously. Could you tell me which specific allergies you have so I can recommend appropriate options?";
-    }
-    
-    // Default response
-    return "I'd be happy to help you with your order! Our menu features a variety of dishes made with fresh, local ingredients. Would you like me to recommend something based on your preferences, or do you have any questions about specific menu items?";
+
+    // For any other message, return the demo notice
+    return "This is a demo version only. Please explore the menu manually while we prepare the complete AI experience. The voice agent has a time limit per response, but it should work fine for most interactions.";
   }
   
   /**

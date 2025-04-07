@@ -75,7 +75,7 @@ const FloatingChatBubble: React.FC<FloatingChatBubbleProps> = ({ isTabletMode = 
         <div className="absolute bottom-full right-0 mb-1 bg-white p-3 rounded-lg shadow-lg text-sm max-w-[200px] animate-fade-in">
           <div className="relative">
             <div className="absolute -bottom-2 right-3 w-3 h-3 bg-white transform rotate-45"></div>
-            <p>Hi there! Need help ordering?</p>
+            <p>🤖 Demo Preview - Click to learn more</p>
           </div>
         </div>
       )}

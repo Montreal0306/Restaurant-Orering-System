@@ -5,8 +5,44 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
+    <style>
+      /* Custom positioning for ElevenLabs widget */
+      elevenlabs-convai {
+        position: fixed !important;
+        bottom: 80px !important;
+        right: 80px !important;
+        z-index: 1000;
+      }
+
+      /* Adjust the widget button size and style */
+      elevenlabs-convai::part(button) {
+        width: 48px !important;
+        height: 48px !important;
+        background-color: #2563eb !important;
+        border-radius: 9999px !important;
+      }
+
+      /* Widget container positioning */
+      elevenlabs-convai::part(container) {
+        position: fixed !important;
+        bottom: 0 !important;
+        right: 0 !important;
+      }
+
+      /* Ensure chat interface stays within view */
+      elevenlabs-convai::part(chat-interface) {
+        max-height: 500px !important;
+        bottom: 60px !important;
+      }
+
+      /* Hide widget when in fullscreen mode or when tablet mode is active */
+      .fullscreen elevenlabs-convai,
+      body:has(.tablet-mode) #main-widget {
+        display: none !important;
+      }
+    </style>
     <!-- ElevenLabs Convai Widget -->
-    <elevenlabs-convai agent-id="Z6o6keC3kdUadF8q4qpa"></elevenlabs-convai>
+    <elevenlabs-convai id="main-widget" agent-id="Z6o6keC3kdUadF8q4qpa"></elevenlabs-convai>
     <script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"></script>
   </head>
   <body>
