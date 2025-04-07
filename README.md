@@ -119,4 +119,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - ElevenLabs for their voice AI technology
 - The React and TypeScript communities 
 
+Deployed live URL: https://restaurant-orering-system.vercel.app/
 API keys here are temporary
